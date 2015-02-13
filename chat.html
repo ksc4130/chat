@@ -69,9 +69,11 @@
                     <div class="well">
                         <h5>Connected</h5>
                         <div ng-repeat="u in users">
-                            <strong ng-style="{color: u.color}">
-                                {{u.name}}
-                            </strong>
+                            <button class="btn btn-sm btn-default" ng-click="addTag(u.name)">
+                                <strong ng-style="{color: u.color}">
+                                    {{u.name}}
+                                </strong>
+                            </button>
                         </div>
                     </div>
                 </div>

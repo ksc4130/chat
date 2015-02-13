@@ -37,12 +37,19 @@
             if($scope.color) {
                 chat.emit('setColor', $scope.color);
             }
-        })
+        });
 
         $scope.dismissError = function (err) {
             $scope.errors = $scope.errors.filter(function (item) {
                 return item !== err;
             });
+        };
+
+        $scope.addTag = function (n) {
+            if(!$scope.newMsg || $scope.newMsg.indexOf('@' + n) <= -1) {
+                var pre = ($scope.newMsg && $scope.newMsg[$scope.newMsg.length -1]) !== ' ' ? ' @' : '@';
+                $scope.newMsg = ($scope.newMsg || '') + pre + n;
+            }
         };
 
         chat.on('msgExpired', function (id) {
