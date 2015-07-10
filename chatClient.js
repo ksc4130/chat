@@ -92,7 +92,7 @@
             }
 
             $scope.users.push(u);
-console.log(u.name);
+console.log(u);
             var notification = new Notification(u.name + ' joined!', {
                 icon: icons.connected,
                 body: u.name + ' joined!'
