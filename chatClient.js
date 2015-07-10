@@ -91,9 +91,11 @@
                 $scope.users.splice($scope.users.indexOf(found), 1);
             }
 
-            $scope.users.push(u);var notification = new Notification(u + ' joined!', {
+            $scope.users.push(u);
+
+            var notification = new Notification(u.name + ' joined!', {
                 icon: icons.connected,
-                body: u + ' joined!'
+                body: u.name + ' joined!'
             });
 
         });
@@ -109,9 +111,9 @@
 
             $scope.users.push(u);
 
-            var notification = new Notification(u + ' left!', {
+            var notification = new Notification(u.name + ' left!', {
                 icon: icons.connected,
-                body: u + ' left!'
+                body: u.name + ' left!'
             });
         });
 
