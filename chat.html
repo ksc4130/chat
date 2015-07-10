@@ -56,7 +56,7 @@
                     </h3>
                 </div>
                 <div class="col-sm-8">
-                    <div scroll-glue="glued" max-height height-percent=65 style="overflow: auto;"class="well">
+                    <div scroll-glue="glued" max-height height-percent=65 style="max-with: 100%;overflow-y: auto;word-wrap: break-word;"class="well">
                         <div ng-repeat="m in messages" class="row">
                             <strong ng-style="{color: m.color}">{{m.who}}: </strong><span ng-class="{highlight: m.msg.toLowerCase().indexOf('@' + name.toLowerCase()) > -1}">{{m.msg}}</span>
                         </div>

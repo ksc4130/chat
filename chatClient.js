@@ -26,9 +26,21 @@
         }
     });
 
+    var icons = {
+        msg: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+        connected: 'http://simpleicon.com/wp-content/uploads/account.png',
+        disconnected: 'http://simpleicon.com/wp-content/uploads/user-4.png',
+        //tagged: 'http://simpleicon.com/wp-content/uploads/map-marker-14.png'
+        tagged: 'http://simpleicon.com/wp-content/uploads/chat.png'
+    };
+
     mainCtrl.$inject = ['$scope', 'chat'];
     app.controller('main', mainCtrl);
     function mainCtrl($scope, chat) {
+        if(Notification.permission !== 'granted') {
+            Notification.requestPermission();
+        }
+
         $scope.errors = [];
         $scope.messages = [];
         $scope.users = [];
@@ -64,7 +76,7 @@
 
         chat.on('age', function (time) {
             $scope.cacheAge = time;
-        })
+        });
 
         chat.on('oops', function (err) {
             $scope.errors.push(err);
@@ -79,7 +91,11 @@
                 $scope.users.splice($scope.users.indexOf(found), 1);
             }
 
-            $scope.users.push(u);
+            $scope.users.push(u);var notification = new Notification(u + ' joined!', {
+                icon: icons.connected,
+                body: u + ' joined!'
+            });
+
         });
 
         chat.on('userDisconnected', function (u) {
@@ -90,6 +106,13 @@
             if(found) {
                 $scope.users.splice($scope.users.indexOf(found), 1);
             }
+
+            $scope.users.push(u);
+
+            var notification = new Notification(u + ' left!', {
+                icon: icons.connected,
+                body: u + ' left!'
+            });
         });
 
         chat.on('users', function (data) {
@@ -120,6 +143,13 @@
 
         chat.on('msg', function (msg) {
             $scope.messages.push(msg);
+
+            if(msg.msg.toLowerCase().indexOf('@' + $scope.name.toLowerCase())) {
+                var notification = new Notification(msg.who + ' tagged you!', {
+                    icon: icons.connected,
+                    body: msg.msg
+                });
+            }
             // var prevTitle = document.title;
             // var interId = setInterval(function (){
             //     if(document.title === prevTitle) {
@@ -132,7 +162,7 @@
             //     clearInterval(interId);
             //     document.title = prevTitle;
             // });
-        })
+        });
 
         $scope.send = function (msg) {
             if($scope.newMsg && $scope.newMsg.length) {
@@ -154,7 +184,7 @@
                     msg: 'Please provide name.'
                 });
             }
-        }
+        };
 
         $scope.clearName = function () {
             $scope.name = null;
