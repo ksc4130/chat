@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="114e02c1-4707-400e-9333-2dfabd0dac5c" name="Default" comment="" />
+    <list default="true" id="114e02c1-4707-400e-9333-2dfabd0dac5c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatClient.js" afterPath="$PROJECT_DIR$/chatClient.js" />
+    </list>
     <ignored path="chat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +26,8 @@
       <file leaf-file-name="chatClient.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatClient.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.648855">
-              <caret line="95" column="51" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.63031626">
+              <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -197,8 +199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.648855">
-          <caret line="95" column="51" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.63031626">
+          <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
           <folding />
         </state>
       </provider>
