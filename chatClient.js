@@ -92,12 +92,13 @@
             }
 
             $scope.users.push(u);
-console.log(u);
-            var notification = new Notification(u.name + ' joined!', {
-                icon: icons.connected,
-                body: u.name + ' joined!'
-            });
 
+            if(u.name && u.id) {
+                var notification = new Notification(u.name + ' joined!', {
+                    icon: icons.connected,
+                    body: u.name + ' joined!'
+                });
+            }
         });
 
         chat.on('userDisconnected', function (u) {
@@ -107,14 +108,15 @@ console.log(u);
 
             if(found) {
                 $scope.users.splice($scope.users.indexOf(found), 1);
+                var notification = new Notification(u.name + ' left!', {
+                    icon: icons.connected,
+                    body: u.name + ' left!'
+                });
             }
 
             $scope.users.push(u);
 
-            var notification = new Notification(u.name + ' left!', {
-                icon: icons.connected,
-                body: u.name + ' left!'
-            });
+
         });
 
         chat.on('users', function (data) {
