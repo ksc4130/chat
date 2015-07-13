@@ -93,7 +93,7 @@
 
             $scope.users.push(u);
 
-            if(u.name && u.id) {
+            if($scope.name !== u.name && u.name && u.id) {
                 var notification = new Notification(u.name + ' joined!', {
                     icon: icons.connected,
                     body: u.name + ' joined!'
@@ -108,14 +108,13 @@
 
             if(found) {
                 $scope.users.splice($scope.users.indexOf(found), 1);
-                var notification = new Notification(u.name + ' left!', {
-                    icon: icons.connected,
-                    body: u.name + ' left!'
-                });
+               if($scope.name !== u.name) {
+                   var notification = new Notification(u.name + ' left!', {
+                       icon: icons.connected,
+                       body: u.name + ' left!'
+                   });
+               }
             }
-
-            $scope.users.push(u);
-
 
         });
 
@@ -148,7 +147,7 @@
         chat.on('msg', function (msg) {
             $scope.messages.push(msg);
 
-            if(msg.msg.toLowerCase().indexOf('@' + $scope.name.toLowerCase())) {
+            if(msg.msg.toLowerCase().indexOf('@' + $scope.name.toLowerCase()) >= 0) {
                 var notification = new Notification(msg.who + ' tagged you!', {
                     icon: icons.connected,
                     body: msg.msg
